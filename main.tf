@@ -1,4 +1,4 @@
-
+## Use us-east-1 region before initilizing this environment
 ## VPC Creation and make it as a Default Tenancy
 
 resource "aws_vpc" "mainvpc" {
