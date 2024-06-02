@@ -1,6 +1,12 @@
 ## Use us-east-1 region before initilizing this environment
 ## VPC Creation and make it as a Default Tenancy
 
+provider "aws" {
+   region  = "us-east-1"
+}
+
+# Create a VPC
+
 resource "aws_vpc" "mainvpc" {
   cidr_block       = "10.244.0.0/16"
   instance_tenancy = "default"
