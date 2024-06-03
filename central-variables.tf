@@ -34,3 +34,6 @@ default = "10.244.127.0/24"
 variable "availability_zone_pub_2" {
 default ="us-east-1b"
 }
+variable "instance_type" {
+default = "t2.micro"
+}
