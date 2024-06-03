@@ -25,7 +25,7 @@ cat <<EOF > /var/www/html/index.html
 <body>
   <h1>Terraform Project Server 1</h1>
   <h2>Instance ID: <span style="color:green">WebServer 1</span></h2>
-  <p>Welcome to Abhishek Veeramalla's Channel</p>
+  <p>If you see this message Application works fine in WebServer 1</p>
   
 </body>
 </html>
