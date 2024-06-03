@@ -37,3 +37,9 @@ default ="us-east-1b"
 variable "instance_type" {
 default = "t2.micro"
 }
+variable "instance_ami_id" {
+default = "ami-00beae93a2d981137"
+}
+variable "instance_public_ip" {
+default = "true"
+}
