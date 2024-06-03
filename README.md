@@ -1,5 +1,4 @@
 **Prerequisites**
-1. Use the following Region before implementing the project
-    us-east-1
+1. Update the necessary information in the **central-variables.tf** before implementing the project
 
-All the subnets created inside this projects are used from us-east-1 region.
+   All the subnets created inside this projects are used from $$us-east-1$$ region at the moment.
