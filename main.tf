@@ -182,7 +182,7 @@ resource "aws_lb" "myloadbalancer" {
   }
 }
 
-output Loadbalancername {
+output Loadbalancer_URL {
 value = "http://${aws_lb.myloadbalancer.dns_name}"
 }
 
