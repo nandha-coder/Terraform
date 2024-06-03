@@ -2,13 +2,13 @@
 ## VPC Creation and make it as a Default Tenancy
 
 provider "aws" {
-   region  = "us-east-1"
+   region  = var.region
 }
 
 # Create a VPC
 
 resource "aws_vpc" "mainvpc" {
-  cidr_block       = "10.244.0.0/16"
+  cidr_block       = var.vpc_cidr_range
   instance_tenancy = "default"
 
   tags = {
@@ -20,8 +20,8 @@ resource "aws_vpc" "mainvpc" {
 
 resource "aws_subnet" "private_subnet_1" {
   vpc_id     = aws_vpc.mainvpc.id
-  cidr_block = "10.244.1.0/24"
-  availability_zone = "us-east-1a"
+  cidr_block = var.private_subnet_1
+  availability_zone = var.availability_zone_pvt_1
 
   tags = {
     Name = "private_subnet_1"
