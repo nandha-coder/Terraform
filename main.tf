@@ -155,7 +155,7 @@ resource "aws_instance" "webserver-1" {
   ami           = var.instance_ami_id
   instance_type = var.instance_type
   subnet_id     = aws_subnet.private_subnet_1.id
-  security_groups = [aws_security_group.main_sg.id]
+  security_groups = [aws_vpc.mainvpc.default_security_group_id]
   associate_public_ip_address = var.instance_public_ip
   user_data       = base64encode(file("svr1.sh"))
 
@@ -168,7 +168,7 @@ resource "aws_instance" "webserver-2" {
   ami           = var.instance_ami_id
   instance_type = var.instance_type
   subnet_id     = aws_subnet.private_subnet_2.id
-  security_groups = [aws_security_group.main_sg.id]
+  security_groups = [aws_vpc.mainvpc.default_security_group_id]
   associate_public_ip_address = var.instance_public_ip
   user_data       = base64encode(file("svr2.sh"))
 
