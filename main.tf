@@ -96,11 +96,7 @@ resource "aws_vpc_security_group_ingress_rule" "ingress_rule" {
   ip_protocol = "-1"
   to_port     = 0
 }
-resource "aws_vpc_security_group_egress_rule" "egress_rule" {
-  security_group_id = aws_vpc.mainvpc.default_security_group_id
-  cidr_ipv4   = "0.0.0.0/0"
-  ip_protocol = "-1"
-  }
+
 resource "aws_internet_gateway" "maininternetgateway" {
   vpc_id = aws_vpc.mainvpc.id
 
