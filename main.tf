@@ -183,7 +183,7 @@ resource "aws_lb" "myloadbalancer" {
 }
 
 output Loadbalancername {
-value = aws_lb.myloadbalancer.dns_name
+value = "http://${aws_lb.myloadbalancer.dns_name}"
 }
 
 ##  Target Group
