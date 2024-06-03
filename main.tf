@@ -32,8 +32,8 @@ resource "aws_subnet" "private_subnet_1" {
 
 resource "aws_subnet" "private_subnet_2" {
   vpc_id     = aws_vpc.mainvpc.id
-  cidr_block = "10.244.2.0/24"
-  availability_zone = "us-east-1b"
+  cidr_block = var.private_subnet_2
+  availability_zone = var.availability_zone_pvt_2
 
   tags = {
     Name = "private_subnet_2"
@@ -44,8 +44,8 @@ resource "aws_subnet" "private_subnet_2" {
 
 resource "aws_subnet" "public_subnet_1" {
   vpc_id     = aws_vpc.mainvpc.id
-  cidr_block = "10.244.128.0/24"
-  availability_zone = "us-east-1a"
+  cidr_block = var.public_subnet_1
+  availability_zone = var.availability_zone_pub_1
 
   tags = {
     Name = "public_subnet_1"
@@ -56,8 +56,8 @@ resource "aws_subnet" "public_subnet_1" {
 
 resource "aws_subnet" "public_subnet_2" {
   vpc_id     = aws_vpc.mainvpc.id
-  cidr_block = "10.244.127.0/24"
-  availability_zone = "us-east-1b"
+  cidr_block = var.public_subnet_2
+  availability_zone = var.availability_zone_pub_2
 
   tags = {
     Name = "public_subnet_2"
@@ -104,7 +104,7 @@ resource "aws_route_table" "public_route_table" {
   vpc_id = aws_vpc.mainvpc.id
 
   route {
-    cidr_block = "10.244.0.0/16"
+    cidr_block = var.vpc_cidr_range
     gateway_id = "local"
         }
   route {
@@ -140,11 +140,11 @@ resource "aws_route_table_association" "rta_public_2" {
 
 
 resource "aws_instance" "webserver-1" {
-  ami           = "ami-00beae93a2d981137"
-  instance_type = "t2.micro"
+  ami           = var.instance_ami_id
+  instance_type = var.instance_type
   subnet_id     = aws_subnet.private_subnet_1.id
   security_groups = [aws_security_group.main_sg.id]
-  associate_public_ip_address = true
+  associate_public_ip_address = var.instance_public_ip
   user_data       = base64encode(file("svr1.sh"))
 
   tags = {
@@ -153,11 +153,11 @@ resource "aws_instance" "webserver-1" {
 }
 
 resource "aws_instance" "webserver-2" {
-  ami           = "ami-00beae93a2d981137"
-  instance_type = "t2.micro"
+  ami           = var.instance_ami_id
+  instance_type = var.instance_type
   subnet_id     = aws_subnet.private_subnet_2.id
   security_groups = [aws_security_group.main_sg.id]
-  associate_public_ip_address = true
+  associate_public_ip_address = var.instance_public_ip
   user_data       = base64encode(file("svr2.sh"))
 
   tags = {
