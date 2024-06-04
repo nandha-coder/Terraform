@@ -6,13 +6,13 @@ private_subnet_1 = "10.244.1.0/24"
 availability_zone_pvt_1 = "us-east-1a"
 
 private_subnet_2 = "10.244.2.0/24"
-availability_zone_pvt_2 ="us-east-1b"
+availability_zone_pvt_2 = "us-east-1b"
 
 public_subnet_1 = "10.244.128.0/24"
-availability_zone_pub_1 ="us-east-1a"
+availability_zone_pub_1 = "us-east-1a"
 
 public_subnet_2 = "10.244.127.0/24"
-availability_zone_pub_2 ="us-east-1b"
+availability_zone_pub_2 = "us-east-1b"
 
 
 instance_type = "t2.micro"
