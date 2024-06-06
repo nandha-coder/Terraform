@@ -16,5 +16,5 @@ availability_zone_pub_2 = "us-east-1b"
 
 
 instance_type = "t2.micro"
-instance_ami_id = "ami-00beae93a2d981137"
+## instance_ami_id = "ami-00beae93a2d981137"  ## Hardcoded Variables removed
 instance_public_ip = "true"
