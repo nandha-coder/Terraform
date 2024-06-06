@@ -123,9 +123,22 @@ resource "aws_route_table_association" "rta_public_2" {
   route_table_id = aws_route_table.public_route_table.id
 }
 
+### EC2 Instance AMI ID fetching from AWS
+
+data "aws_ami" "ami_id" {
+        most_recent      = true
+        owners = ["amazon"]
+    filter {
+            name   = "name"
+            values = ["al2023-ami-2023*x86_64"]
+           }
+        }
+
+### EC2 Instance creation
 
 resource "aws_instance" "webserver-1" {
-  ami           = var.instance_ami_id
+## //  ami           = var.instance_ami_id        ## Hardcoded AMI ID variables are removed 
+  ami          = data.aws_ami.ami_id.image_id   
   instance_type = var.instance_type
   subnet_id     = aws_subnet.private_subnet_1.id
   security_groups = [aws_vpc.mainvpc.default_security_group_id]
@@ -138,7 +151,8 @@ resource "aws_instance" "webserver-1" {
 }
 
 resource "aws_instance" "webserver-2" {
-  ami           = var.instance_ami_id
+## // ami           = var.instance_ami_id         ## Hardcoded AMI ID variables are removed 
+  ami           = data.aws_ami.ami_id.image_id
   instance_type = var.instance_type
   subnet_id     = aws_subnet.private_subnet_2.id
   security_groups = [aws_vpc.mainvpc.default_security_group_id]
